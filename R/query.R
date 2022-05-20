@@ -82,7 +82,11 @@ coincap_symbol_to_nm <- function(x) {
   stopifnot(is.character(x))
   arg_ls <- list(base_symbol = tolower(x), limit = 1)
   dat <- do.call(coincap_markets, arg_ls)[,c("base_symbol","base_id")]
-  stats::setNames(dat$base_id, dat$base_symbol)
+  if (inherits(dat, "data.frame") && nrow(dat) > 0) {
+    return(stats::setNames(dat$base_id, dat$base_symbol))
+  } else {
+    stop("no match found")
+  }
 }
 # coincap_symbol_to_nm(x = "btc")
 
@@ -93,7 +97,11 @@ coincap_nm_to_symbol <- function(x) {
   stopifnot(is.character(x))
   arg_ls <- list(base_id = tolower(x), limit = 1)
   dat <- do.call(coincap_markets, arg_ls)[,c("base_symbol","base_id")]
-  stats::setNames(dat$base_symbol, dat$base_id)
+  if (inherits(dat, "data.frame") && nrow(dat) > 0) {
+    return(stats::setNames(dat$base_symbol, dat$base_id))
+  } else {
+    stop("no match found")
+  }
 }
 # coincap_nm_to_symbol(x = "bitcoin")
 
