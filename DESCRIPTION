@@ -1,0 +1,26 @@
+Package: rcoincap
+Title: R Interface for the CoinCap API
+Version: 0.0.0.9000
+Authors@R: 
+    person(given = "Tucker",
+           family = "Southern",
+           role = c("aut", "cre"),
+           email = "tucker@thesoutherns.net")
+Description: This package provides functions for querying data from the CoinCap API
+License: MIT + file LICENSE
+BugReports: https://github.com/southernt/rcoincap/issues
+Encoding: UTF-8
+Roxygen: list(markdown = TRUE)
+RoxygenNote: 7.1.2
+VignetteBuilder: knitr
+Imports: 
+    httr,
+    dplyr,
+    janitor,
+    jsonlite,
+    lubridate,
+    purrr
+Suggests: 
+    knitr,
+    testthat (>= 3.0.0)
+Config/testthat/edition: 3
